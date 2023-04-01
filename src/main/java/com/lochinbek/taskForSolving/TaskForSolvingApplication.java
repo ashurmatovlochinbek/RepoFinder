@@ -37,6 +37,7 @@ public class TaskForSolvingApplication {
 			ResponseItemFromApi[] itemsFromApis = response.getBody();
 			User updateableUser = new User(user.getUsername());
 			Arrays.asList(itemsFromApis).stream().forEach(item -> updateableUser.addRepo(new Repo(item.getName())));
+			userService.delete(user);
 			userService.save(updateableUser);
 		}
 
